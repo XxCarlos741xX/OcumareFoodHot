@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- ✏️ Título y descripción que salen en Google y al compartir el enlace por WhatsApp -->
+<title>Ocumare Food Hot | Pide en línea · 24 horas</title>
+<meta name="description" content="Hamburguesas, pepitos, parrillas, pescado frito y almuerzos en El Limón, Maracay. Abiertos 24 horas con delivery. Arma tu pedido en un minuto.">
+<meta property="og:title" content="Ocumare Food Hot · Pide en línea 24/7">
+<meta property="og:description" content="Comida rápida, parrillas y pescado frito en El Limón, Maracay. Delivery las 24 horas.">
+<meta property="og:image" content="img/hero.jpg">
+<meta name="theme-color" content="#0D0B09">
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ================================================================
+     ✏️ 1. COLORES DE LA MARCA (sacados del logo y del menú de Instagram)
+     ================================================================ */
+  --naranja:#E8811E;       /* "Ocumare" del logo: botones y acciones */
+  --naranja-2:#F4A81D;     /* amarillo del degradado del logo */
+  --rojo:#D2361F;          /* "FOOD HOT": etiquetas de lo más pedido */
+  --dorado:#E9B949;        /* dorado del menú: títulos y precios */
+  --verde:#3E8E3A;         /* palmeras del logo */
+  --fondo:#0D0B09;         /* negro cálido del menú */
+  --tarjeta:#1A1612;
+  --tarjeta-2:#231E18;
+  --borde:#2F2820;
+  --texto:#FBF6EE;
+  --texto-suave:#BDB2A3;
+  --whatsapp:#25D366;
+
+  /* ✏️ 2. TIPOGRAFÍAS: Playfair Display como el "MENU" dorado, Montserrat para leer */
+  --f-titulo:'Playfair Display', Georgia, serif;
+  --f-texto:'Montserrat', system-ui, sans-serif;
+  --radio:16px;
+  --grad-marca:linear-gradient(95deg,var(--naranja) 0%,var(--naranja-2) 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:64px}
+body{background:var(--fondo);color:var(--texto);font-family:var(--f-texto);line-height:1.45;padding-bottom:110px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+.contenedor{max-width:1080px;margin:0 auto;padding:0 16px}
+.oro{color:var(--dorado)}
+
+/* ---------- Portada ---------- */
+.portada{position:relative;overflow:hidden;background:var(--fondo)}
+.portada::before{content:"";position:absolute;inset:0;background:url(img/hero.jpg) center 35%/cover no-repeat;opacity:.55;filter:saturate(1.1)}
+.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,11,9,.35) 0%,rgba(13,11,9,.55) 45%,var(--fondo) 100%)}
+.portada .contenedor{position:relative;z-index:1;padding-top:28px;padding-bottom:26px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.logo{width:124px;height:124px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 0 0 3px var(--dorado),0 10px 30px rgba(0,0,0,.55)}
+.portada h1{font-family:var(--f-titulo);font-weight:800;font-size:clamp(2rem,7vw,3.2rem);line-height:1.05;margin-top:16px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.portada h1 span{background:var(--grad-marca);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lema{margin-top:8px;font-weight:500;color:#EFE6D8;max-width:34ch;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.chip{background:rgba(13,11,9,.6);backdrop-filter:blur(6px);border:1px solid rgba(233,185,73,.45);padding:6px 12px;border-radius:999px;font-size:.8rem;font-weight:600}
+.chip.vivo::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#3DDC5A;margin-right:6px;box-shadow:0 0 0 3px rgba(61,220,90,.25);vertical-align:1px}
+.linea-oro{height:2px;background:linear-gradient(90deg,transparent,var(--dorado),transparent);margin:0 auto;max-width:520px;opacity:.8}
+
+/* ---------- Lo más pedido ---------- */
+.seccion-titulo{font-family:var(--f-titulo);font-size:1.7rem;font-weight:700;color:var(--dorado);margin:26px 0 12px;display:flex;align-items:baseline;gap:10px}
+.seccion-titulo small{font-family:var(--f-texto);font-size:.78rem;color:var(--texto-suave);font-weight:500}
+.carrusel-wrap{position:relative}
+.carrusel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:2px 0 6px;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
+.carrusel::-webkit-scrollbar{display:none}
+.carrusel.arrastrando{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing;user-select:none}
+.carrusel.arrastrando img{pointer-events:none}
+.top{flex:0 0 78%;scroll-snap-align:start;position:relative;border-radius:var(--radio);overflow:hidden;background:var(--tarjeta);border:1px solid var(--borde)}
+@media(min-width:560px){.top{flex-basis:calc((100% - 12px)/2)}}
+@media(min-width:900px){.top{flex-basis:calc((100% - 24px)/3)}}
+.flecha{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--dorado);background:rgba(13,11,9,.88);color:var(--dorado);font-size:1.5rem;line-height:1;display:none;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.5);transition:opacity .2s}
+.flecha:hover{background:var(--dorado);color:#1A1204}
+.flecha.izq{left:-14px}.flecha.der{right:-14px}
+.flecha:disabled{opacity:0;pointer-events:none}
+@media(hover:hover) and (pointer:fine){.flecha{display:grid}}
+.puntos{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.puntos button{width:8px;height:8px;border-radius:999px;border:none;padding:0;background:var(--borde);transition:width .25s,background .25s}
+.puntos button.activo{width:22px;background:var(--dorado)}
+.top img{aspect-ratio:4/3;width:100%;height:auto;object-fit:cover}
+.top .sin-foto{aspect-ratio:4/3;height:auto}
+.top .info{position:absolute;inset:auto 0 0 0;padding:40px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.88));display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.top h3{font-size:1rem;font-weight:700;line-height:1.2}
+.top .precio{display:block;margin-top:2px}
+
+/* ---------- Categorías ---------- */
+nav.categorias{position:sticky;top:0;z-index:15;background:rgba(13,11,9,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--borde);margin-top:20px}
+nav.categorias .contenedor{display:flex;gap:8px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+nav.categorias .contenedor::-webkit-scrollbar{display:none}
+nav.categorias a{flex:0 0 auto;text-decoration:none;padding:7px 14px;border-radius:999px;border:1px solid var(--borde);font-size:.85rem;font-weight:600;color:var(--texto-suave);transition:.2s}
+nav.categorias a.activa{background:var(--dorado);border-color:var(--dorado);color:#1A1204}
+
+/* ---------- Menú ---------- */
+.grilla{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:720px){.grilla{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+@media(min-width:1000px){.grilla{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.producto{background:var(--tarjeta);border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s}
+.producto.en-carrito{border-color:var(--naranja)}
+.foto{position:relative;aspect-ratio:1/1;background:var(--tarjeta-2)}
+.foto img{width:100%;height:100%;object-fit:cover}
+.sin-foto{width:100%;height:100%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 40%,#2B231A,#15110D);color:var(--dorado);font-family:var(--f-titulo);font-size:1.1rem;padding:12px}
+.sin-foto span{display:block;font-size:2.4rem;margin-bottom:4px}
+.badge{position:absolute;top:8px;left:8px;background:var(--rojo);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.3px;padding:4px 8px;border-radius:999px;text-transform:uppercase}
+.producto .info{padding:10px 11px 12px;display:flex;flex-direction:column;flex:1}
+.producto h3{font-size:.95rem;font-weight:700;line-height:1.25}
+.producto p{font-size:.76rem;color:var(--texto-suave);margin:4px 0 10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.fila{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.precio{font-family:var(--f-titulo);font-weight:700;font-size:1.15rem;color:var(--dorado)}
+.contador{display:flex;align-items:center;gap:4px}
+.contador button{width:34px;height:34px;border-radius:50%;border:none;background:var(--grad-marca);color:#1A0E02;font-size:1.25rem;font-weight:800;line-height:1;box-shadow:0 3px 10px rgba(232,129,30,.35)}
+.contador button.menos{background:var(--tarjeta-2);color:var(--texto);box-shadow:none;border:1px solid var(--borde)}
+.contador span{min-width:18px;text-align:center;font-weight:800}
+
+/* ---------- Pie ---------- */
+footer{margin-top:44px;border-top:1px solid var(--borde);padding:28px 0 10px;text-align:center;color:var(--texto-suave);font-size:.85rem}
+footer .logo{width:70px;height:70px;margin:0 auto 10px;box-shadow:0 0 0 2px var(--dorado)}
+footer p{margin:4px 0}
+footer a{color:var(--dorado);font-weight:600;text-decoration:none}
+
+/* ---------- Barra del carrito ---------- */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:14px 16px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--fondo) 35%);transform:translateY(120%);transition:transform .25s}
+.barra.visible{transform:none}
+.barra button{width:100%;max-width:560px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;background:var(--grad-marca);color:#1A0E02;border:none;border-radius:var(--radio);padding:16px 20px;font-size:1rem;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+.pulso{animation:pulso .35s}
+@keyframes pulso{50%{transform:scale(1.03)}}
+
+/* ---------- Panel de pedido ---------- */
+.panel-fondo{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.7);display:none;align-items:flex-end;justify-content:center}
+.panel-fondo.abierto{display:flex}
+.panel{background:var(--tarjeta);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;border-radius:20px 20px 0 0;padding:20px 16px calc(28px + env(safe-area-inset-bottom));border-top:2px solid var(--dorado)}
+@media(min-width:640px){.panel-fondo{align-items:center}.panel{border-radius:20px;border:1px solid var(--borde)}}
+.panel h2{font-family:var(--f-titulo);font-size:1.8rem;color:var(--dorado);margin:0 0 10px}
+.cerrar{float:right;background:none;border:none;color:var(--texto-suave);font-size:1.8rem;line-height:1}
+.resumen{margin-top:4px}
+.resumen li{list-style:none;display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--borde);font-size:.9rem;transition:opacity .2s}
+.resumen .mini{width:48px;height:48px;border-radius:10px;object-fit:cover;background:var(--tarjeta-2);display:grid;place-items:center;font-size:1.4rem}
+.resumen .nom{font-weight:700;line-height:1.25}
+.resumen .sub{display:block;font-family:var(--f-titulo);color:var(--dorado);font-weight:700;margin-top:2px}
+.resumen .acciones{display:flex;align-items:center;gap:6px}
+.resumen .contador button{width:30px;height:30px;font-size:1.1rem}
+.quitar{width:34px;height:34px;border-radius:50%;border:1px solid var(--borde);background:transparent;color:#FF9A8A;display:grid;place-items:center;margin-left:2px}
+.quitar:hover{background:rgba(210,54,31,.15);border-color:var(--rojo)}
+.quitar svg{width:17px;height:17px}
+.vaciar{background:none;border:none;color:var(--texto-suave);font-size:.8rem;text-decoration:underline;margin-top:8px;padding:4px 0}
+.total{display:flex;justify-content:space-between;font-weight:800;font-size:1.15rem;margin:12px 0 4px}
+.total span:last-child{font-family:var(--f-titulo);color:var(--dorado);font-size:1.4rem}
+.nota-chica{font-size:.78rem;color:var(--texto-suave)}
+form{margin-top:16px;display:grid;gap:12px}
+label{font-size:.82rem;font-weight:600;display:grid;gap:5px}
+input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--borde);background:var(--fondo);color:var(--texto);font-family:inherit;font-size:16px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--naranja);border-color:transparent}
+textarea{resize:vertical;min-height:64px}
+.opciones{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opciones label{display:flex;align-items:center;gap:8px;border:1px solid var(--borde);border-radius:12px;padding:12px;font-weight:700}
+.opciones label:has(input:checked){border-color:var(--naranja);background:rgba(232,129,30,.1)}
+.opciones input{width:auto;accent-color:var(--naranja)}
+.oculto{position:absolute;left:-9999px}   /* trampa anti-spam, no tocar */
+.btn{border:none;border-radius:var(--radio);padding:16px;font-size:1rem;font-weight:800;color:#1A0E02;background:var(--grad-marca);width:100%}
+.btn:disabled{opacity:.6}
+.btn-wa{background:var(--whatsapp);color:#fff;display:block;text-align:center;text-decoration:none;margin-top:12px}
+.btn-sec{background:var(--tarjeta-2);color:var(--texto);border:1px solid var(--borde);margin-top:10px}
+.error{color:#FF9A8A;font-size:.88rem;min-height:1.2em}
+.exito{text-align:center}
+.exito .grande{font-family:var(--f-titulo);font-size:3.4rem;color:var(--dorado);line-height:1}
+.exito h2{margin-top:6px}
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="contenedor">
+    <!-- ✏️ Logo: reemplaza img/logo.jpg por el archivo original en buena calidad si lo tienes -->
+    <img class="logo" src="img/logo.jpg" alt="Ocumare Food Hot">
+    <h1>Pide rico, <span>a cualquier hora</span></h1>
+    <p class="lema">Mi gente bella: hamburguesas, pepitos, parrillas y pescado frito, directo a tu puerta 🌴🔥</p>
+    <div class="chips">
+      <span class="chip vivo">Abierto 24/7</span>
+      <span class="chip">🛵 Delivery</span>
+      <span class="chip">📍 El Limón, Maracay</span>
+    </div>
+  </div>
+  <div class="linea-oro"></div>
+</header>
+
+<main class="contenedor">
+  <h2 class="seccion-titulo">Lo más pedido 🔥</h2>
+  <div class="carrusel-wrap">
+    <button class="flecha izq" type="button" aria-label="Anterior" id="flecha-izq">‹</button>
+    <div class="carrusel" id="destacados" aria-roledescription="carrusel"></div>
+    <button class="flecha der" type="button" aria-label="Siguiente" id="flecha-der">›</button>
+  </div>
+  <div class="puntos" id="puntos" aria-label="Elegir plato"></div>
+</main>
+
+<nav class="categorias" aria-label="Categorías"><div class="contenedor" id="nav"></div></nav>
+
+<div class="contenedor" id="menu"><p class="nota-chica" style="margin-top:24px">Cargando el menú…</p></div>
+
+<footer class="contenedor">
+  <img class="logo" src="img/logo.jpg" alt="" loading="lazy">
+  <!-- ✏️ Dirección, horario y redes -->
+  <p><strong class="oro">Ocumare Food Hot</strong> · Trabajamos 24 horas, los 7 días</p>
+  <p>📍 Coliseo, El Limón, diagonal a la pasarela, Maracay, Aragua</p>
+  <p>📲 <a id="link-wa" href="#" target="_blank" rel="noopener">WhatsApp 0424-315-71-34</a> · <a href="https://www.instagram.com/ocumarefoodhot/" target="_blank" rel="noopener">@ocumarefoodhot</a></p>
+</footer>
+
+<div class="barra" id="barra"><button type="button" id="btn-barra" onclick="abrirPanel()"><span id="barra-cant">Ver pedido</span><span id="barra-total"></span></button></div>
+
+<div class="panel-fondo" id="panel-fondo" onclick="if(event.target===this)cerrarPanel()">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="titulo-panel">
+    <button class="cerrar" type="button" onclick="cerrarPanel()" aria-label="Cerrar">×</button>
+    <div id="panel-contenido"></div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   ✏️ 3. CONFIGURACIÓN DEL LOCAL
+   ===================================================================== */
+const CONFIG = {
+  // URL de Google Apps Script (termina en /exec). Vacía = MODO DEMOSTRACIÓN:
+  // se usa el menú de abajo y los pedidos NO se guardan en ningún lado.
+  API_URL: 'https://script.google.com/macros/s/AKfycbwRue9ki4tanVddBKJspzNgYSuL3DaAmxUnfSWaYhBPQmWEN6YcbWzA4Bc4nbZlChNQ/exec',
+
+  NOMBRE: 'Ocumare Food Hot',
+  WHATSAPP: '584243157134',          // número del local, sin + ni espacios
+  MONEDA: '$',
+  NOTA_DELIVERY: 'El costo del delivery depende de tu zona y te lo confirmamos por WhatsApp.',
+  METODOS_PAGO: ['Pago Móvil', 'Efectivo ($)', 'Efectivo (Bs)', 'Punto de venta al recibir', 'Zelle'],
+};
+
+// Menú tomado de las historias destacadas "Menu" de Instagram (con fotos de sus posts).
+// Con API_URL configurada, el menú real se lee de la hoja "Menu" de Google Sheets y este se ignora.
+const MENU_DEMO = [
+  {"id": "HB1", "categoria": "Hamburguesas", "nombre": "Combo dúo mini", "descripcion": "2 hamburguesas mini de carne o pollo, vegetales y 3 salsas básicas, con papas a la francesa", "precio": 4.99, "imagen": "img/duo-mini.jpg", "destacado": false},
+  {"id": "HB2", "categoria": "Hamburguesas", "nombre": "Tradicional", "descripcion": "Pan de orégano, 150 g de pollo o carne, queso Kraft, vegetales y 3 salsas básicas, con papas a la francesa o rústicas", "precio": 4.99, "imagen": "img/tradicional.jpg", "destacado": false},
+  {"id": "HB3", "categoria": "Hamburguesas", "nombre": "Pollo crispy", "descripcion": "120 g de milanesa rebozada en panko, lechuga, tomate, cebollas caramelizadas, salsa tártara y queso Kraft, con papas a la francesa", "precio": 6.99, "imagen": "img/pollo-crispy.jpg", "destacado": false},
+  {"id": "HB4", "categoria": "Hamburguesas", "nombre": "Ocumare Gourmet", "descripcion": "250 g de carne rellena de mozzarella envuelta en tocineta, vegetales, salsa big mac, pepinillos y queso Kraft, con papas a la francesa", "precio": 8.99, "imagen": "img/ocumare-gourmet.jpg", "destacado": true},
+  {"id": "HB5", "categoria": "Hamburguesas", "nombre": "Poseidón", "descripcion": "100 g de camarón al ajillo y 100 g de pulpo laqueado, lechuga, salsa spicy y queso crema, con papas a la francesa o rústicas", "precio": 8.99, "imagen": "img/poseidon.jpg", "destacado": false},
+  {"id": "HB6", "categoria": "Hamburguesas", "nombre": "Especial", "descripcion": "150 g de pollo o carne, queso Kraft, vegetales, 3 salsas, huevo, jamón y tocineta, con papas a la francesa o rústicas", "precio": 8.99, "imagen": "img/especial.jpg", "destacado": false},
+  {"id": "HB7", "categoria": "Hamburguesas", "nombre": "Mixta", "descripcion": "120 g de pollo y 150 g de carne, queso Kraft, vegetales, 3 salsas, huevo, jamón y tocineta, con papas a la francesa o rústicas", "precio": 9.99, "imagen": "img/mixta.jpg", "destacado": false},
+  {"id": "HB8", "categoria": "Hamburguesas", "nombre": "Cheese burger", "descripcion": "Doble carne de 150 g, triple queso Kraft, pepinillos, sweet relish y salsa big mac, con papas a la francesa o rústicas", "precio": 9.99, "imagen": "img/cheese-burger.jpg", "destacado": false},
+  {"id": "PP1", "categoria": "Perros y pepitos", "nombre": "Perro normal", "descripcion": "Pan de orégano, 1 salchicha, ensalada, papitas y 3 salsas básicas", "precio": 2.5, "imagen": "img/perro-normal.jpg", "destacado": false},
+  {"id": "PP2", "categoria": "Perros y pepitos", "nombre": "Perro especial", "descripcion": "Salchicha, ensalada, papitas, 3 salsas básicas y queso amarillo", "precio": 2.99, "imagen": "img/perro-especial.jpg", "destacado": false},
+  {"id": "PP3", "categoria": "Perros y pepitos", "nombre": "Perro gourmet", "descripcion": "Salchicha, ensalada, papitas, salsa tártara, queso amarillo, pepinillo, sweet relish y tocineta", "precio": 4.99, "imagen": "img/perro-gourmet.jpg", "destacado": false},
+  {"id": "PP4", "categoria": "Perros y pepitos", "nombre": "Perro polaco", "descripcion": "Salchicha polaca, ensalada, papitas, 3 salsas básicas y queso amarillo", "precio": 4.99, "imagen": "img/perro-polaco.jpg", "destacado": false},
+  {"id": "PP5", "categoria": "Perros y pepitos", "nombre": "Ternerito", "descripcion": "Pan de orégano con 150 g de pollo o carne, ensalada, salsa tártara, queso amarillo y tocineta", "precio": 7, "imagen": "img/ternerito.jpg", "destacado": false},
+  {"id": "PP6", "categoria": "Perros y pepitos", "nombre": "Pepito normal", "descripcion": "Pan de orégano de 40 cm, 300 g de carne o pollo, lechuga, tomate, cebolla, 3 salsas, papitas, queso amarillo y jamón, con papas fritas", "precio": 16, "imagen": "img/pepito-normal.jpg", "destacado": false},
+  {"id": "PP7", "categoria": "Perros y pepitos", "nombre": "Pepito especial", "descripcion": "Pan de 40 cm, 300 g de carne o pollo, vegetales, 3 salsas, papitas, queso amarillo, jamón, tocineta, huevo y 2 chorizos, con papas fritas", "precio": 21, "imagen": "", "destacado": false},
+  {"id": "PP8", "categoria": "Perros y pepitos", "nombre": "Pepito playero", "descripcion": "Pan de orégano, 250 g de pollo y 250 g de camarones rebozados, lechuga y salsa tártara, con 200 g de papas rústicas", "precio": 25, "imagen": "img/pepito-playero.jpg", "destacado": true},
+  {"id": "PO1", "categoria": "Pollo", "nombre": "Pollo frito 1 pieza", "descripcion": "1 pieza rebozada con 100 g de papas fritas, 2 arepitas y ensalada", "precio": 5, "imagen": "img/pollo-1.jpg", "destacado": false},
+  {"id": "PO2", "categoria": "Pollo", "nombre": "Pollo frito 2 piezas", "descripcion": "2 piezas rebozadas con 150 g de papas fritas, 5 arepitas y ensalada", "precio": 9, "imagen": "img/pollo-2.jpg", "destacado": false},
+  {"id": "PO3", "categoria": "Pollo", "nombre": "Pollo frito 3 piezas", "descripcion": "3 piezas rebozadas con 250 g de papas fritas, 8 arepitas y ensalada", "precio": 13, "imagen": "img/pollo-3.jpg", "destacado": false},
+  {"id": "PO4", "categoria": "Pollo", "nombre": "Tender de pollo", "descripcion": "120 g de milanesa en tiras rebozadas con 150 g de papas fritas", "precio": 5, "imagen": "img/tender.jpg", "destacado": false},
+  {"id": "PO5", "categoria": "Pollo", "nombre": "Alitas 16 piezas", "descripcion": "Alitas rebozadas en salsa BBQ y mostaza miel, 200 g de papas fritas, 6 arepitas y ensalada", "precio": 14, "imagen": "img/alitas.jpg", "destacado": true},
+  {"id": "PO6", "categoria": "Pollo", "nombre": "Club house", "descripcion": "250 g de pollo, 2 huevos, jamón, queso amarillo, lechuga, tomate, cebolla y 3 salsas en pan blanco, con 300 g de papas fritas", "precio": 17, "imagen": "img/club-house.jpg", "destacado": false},
+  {"id": "PO7", "categoria": "Pollo", "nombre": "Patacón", "descripcion": "2 ruedas de patacón rellenas con 150 g de proteína, vegetales, 3 salsas, jamón, queso amarillo y 1 huevo", "precio": 9, "imagen": "", "destacado": false},
+  {"id": "PA1", "categoria": "Parrillas", "nombre": "Parrilla 1 persona", "descripcion": "120 g de pollo, 120 g de bistec, 1 chorizo y 200 g de papas fritas, con ensalada", "precio": 15, "imagen": "img/parrilla-1.jpg", "destacado": false},
+  {"id": "PA2", "categoria": "Parrillas", "nombre": "Parrilla para 2", "descripcion": "250 g de pollo, 250 g de bistec, 2 chorizos, 300 g de papas fritas y 6 arepitas, con ensalada", "precio": 25, "imagen": "img/parrilla-2.jpg", "destacado": false},
+  {"id": "PA3", "categoria": "Parrillas", "nombre": "Parrilla mar y tierra", "descripcion": "250 g de pollo, 250 g de bistec, 250 g de mariscos y 300 g de papas fritas, con ensalada", "precio": 28, "imagen": "img/parrilla-mar-tierra.jpg", "destacado": true},
+  {"id": "PE1", "categoria": "Pescados y mariscos", "nombre": "Pargo rosado", "descripcion": "Pargo frito crujiente con arroz, tostones y ensalada rallada", "precio": 7, "imagen": "img/pargo-rosado.jpg", "destacado": true},
+  {"id": "PE2", "categoria": "Pescados y mariscos", "nombre": "Pargo blanco", "descripcion": "Pargo frito con 3 tostones, arroz y ensalada", "precio": 7, "imagen": "img/pargo-blanco.jpg", "destacado": false},
+  {"id": "PE3", "categoria": "Pescados y mariscos", "nombre": "Jurel", "descripcion": "Rueda de jurel a la plancha bañada en ajillo, con arroz, 3 tostones y ensalada", "precio": 8, "imagen": "img/jurel.jpg", "destacado": false},
+  {"id": "PE4", "categoria": "Pescados y mariscos", "nombre": "Merluza", "descripcion": "Filet de merluza rebozado o al ajillo, con 3 tostones, arroz y ensalada", "precio": 8, "imagen": "img/merluza.jpg", "destacado": false},
+  {"id": "PE5", "categoria": "Pescados y mariscos", "nombre": "Camarones al ajillo", "descripcion": "300 g de camarón salteado en ajo, mantequilla y vino blanco, con 200 g de papas fritas", "precio": 14, "imagen": "img/camarones-ajillo.jpg", "destacado": false},
+  {"id": "PS1", "categoria": "Pastas y risottos", "nombre": "Pasta boloñesa", "descripcion": "Vermicelli con 200 g de salsa boloñesa, queso pecorino y 2 tajadas", "precio": 5.99, "imagen": "img/pasta-bolonesa.jpg", "destacado": false},
+  {"id": "PS2", "categoria": "Pastas y risottos", "nombre": "Pasta cremosa de pollo", "descripcion": "Linguine con tocineta crocante, pollo a las finas hierbas y crema de leche, con pan al ajillo y pecorino", "precio": 7.99, "imagen": "img/pasta-cremosa-pollo.jpg", "destacado": false},
+  {"id": "PS3", "categoria": "Pastas y risottos", "nombre": "Pasta marinera", "descripcion": "Linguine con 350 g de mariscos salteados en vino blanco y bisque, con parmesano y pan de ajo", "precio": 14, "imagen": "img/pasta-marinera.jpg", "destacado": false},
+  {"id": "PS4", "categoria": "Pastas y risottos", "nombre": "Pasta frutos del mar", "descripcion": "Linguine con 350 g de mariscos en vino blanco, finas especias y crema, con parmesano y pan de ajo", "precio": 14, "imagen": "img/pasta-frutos-mar.jpg", "destacado": false},
+  {"id": "PS5", "categoria": "Pastas y risottos", "nombre": "Risotto de pollo", "descripcion": "Risotto cremoso con pollo, finas hierbas y tocineta en crema de leche, con pecorino y pan de ajo", "precio": 7.99, "imagen": "", "destacado": false},
+  {"id": "PS6", "categoria": "Pastas y risottos", "nombre": "Risotto de mariscos", "descripcion": "Risotto cremoso con mariscos flameados en vino blanco y crema, con pecorino y pan de ajo", "precio": 14, "imagen": "img/risotto-mariscos.jpg", "destacado": false},
+  {"id": "EN1", "categoria": "Ensaladas", "nombre": "César con pollo", "descripcion": "120 g de pollo a la plancha, lechuga, crotones, tocineta, pecorino y aderezo César", "precio": 8, "imagen": "img/cesar-pollo.jpg", "destacado": false},
+  {"id": "EN2", "categoria": "Ensaladas", "nombre": "César con camarón", "descripcion": "120 g de camarón al ajillo, lechuga, crotones, tocineta, pecorino y aderezo César", "precio": 10, "imagen": "img/cesar-camaron.jpg", "destacado": false},
+  {"id": "SO1", "categoria": "Sopas", "nombre": "Sopa de res", "descripcion": "Sopa grande de costilla con 2 arepitas", "precio": 6, "imagen": "img/sopa-res.jpg", "destacado": false},
+  {"id": "SO2", "categoria": "Sopas", "nombre": "Sopa de pescado", "descripcion": "Sopa grande de pescado con 2 arepitas", "precio": 6, "imagen": "img/sopa-pescado.jpg", "destacado": false},
+  {"id": "SO3", "categoria": "Sopas", "nombre": "Fosforera", "descripcion": "Sopa grande de mariscos con 2 arepitas", "precio": 10, "imagen": "img/fosforera.jpg", "destacado": false},
+  {"id": "AL1", "categoria": "Almuerzos", "nombre": "Ragú de carne", "descripcion": "200 g de ragú de carne con papas y zanahoria, con 3 contornos", "precio": 4.99, "imagen": "img/ragu.jpg", "destacado": false},
+  {"id": "AL2", "categoria": "Almuerzos", "nombre": "Bistec encebollado", "descripcion": "120 g de bistec con especias y cebolla salteada, con 3 contornos", "precio": 4.99, "imagen": "img/bistec-encebollado.jpg", "destacado": false},
+  {"id": "AL3", "categoria": "Almuerzos", "nombre": "Chuleta de cerdo", "descripcion": "Chuleta fresca con ajo, especias y vino blanco, con 3 contornos", "precio": 4.99, "imagen": "img/chuleta-cerdo.jpg", "destacado": false},
+  {"id": "AL4", "categoria": "Almuerzos", "nombre": "Chuleta ahumada", "descripcion": "Chuleta ahumada al ajillo con 3 contornos", "precio": 4.99, "imagen": "img/chuleta-ahumada.jpg", "destacado": false},
+  {"id": "AL5", "categoria": "Almuerzos", "nombre": "Pollo guisado", "descripcion": "1 pieza de pollo guisado con papas y zanahorias, con 3 contornos", "precio": 4.99, "imagen": "img/pollo-guisado.jpg", "destacado": false},
+  {"id": "AL6", "categoria": "Almuerzos", "nombre": "Milanesa de pollo", "descripcion": "120 g de milanesa con ajo, orégano, pimienta, mantequilla y vino blanco, con 3 contornos", "precio": 4.99, "imagen": "img/milanesa-pollo.jpg", "destacado": false},
+  {"id": "AL7", "categoria": "Almuerzos", "nombre": "Pabellón criollo", "descripcion": "Arroz blanco, caraotas, carne mechada, 2 tajadas y queso llanero", "precio": 5.99, "imagen": "img/pabellon.jpg", "destacado": false},
+  {"id": "AL8", "categoria": "Almuerzos", "nombre": "Milanesa parmesana", "descripcion": "Milanesa de pollo con salsa napolitana, mozzarella y pecorino gratinados, con 3 contornos", "precio": 5.99, "imagen": "img/milanesa-parmesana.jpg", "destacado": false}
+];
+
+/* =====================================================================
+   A partir de aquí no hace falta cambiar nada.
+   ===================================================================== */
+const EMOJI = {'Hamburguesas':'🍔','Perros y pepitos':'🌭','Pollo':'🍗','Parrillas':'🥩','Pescados y mariscos':'🐟','Pastas y risottos':'🍝','Ensaladas':'🥗','Sopas':'🍲','Almuerzos':'🍛'};
+let MENU = [];
+let carrito = leerCarrito();   // { idProducto: cantidad }
+
+const $ = (id) => document.getElementById(id);
+const esc = (t) => String(t ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dinero = (n) => CONFIG.MONEDA + (Number(n) % 1 ? Number(n).toFixed(2) : Number(n));
+const slug = (t) => 'cat-' + String(t).toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g, '-');
+
+function leerCarrito(){ try { return JSON.parse(localStorage.getItem('carrito-ocumare') || '{}'); } catch { return {}; } }
+function guardarCarrito(){ try { localStorage.setItem('carrito-ocumare', JSON.stringify(carrito)); } catch {} }
+
+async function cargarMenu(){
+  $('link-wa').href = 'https://wa.me/' + CONFIG.WHATSAPP;
+  if (!CONFIG.API_URL) { MENU = MENU_DEMO; pintarMenu(); return; }
+  try {
+    const r = await fetch(CONFIG.API_URL + '?accion=menu');
+    const datos = await r.json();
+    if (!datos.ok) throw new Error(datos.error);
+    MENU = datos.menu;
+    pintarMenu();
+  } catch (e) {
+    $('menu').innerHTML = '<p class="error" style="margin-top:24px">No pudimos cargar el menú. Revisa tu conexión o pide directo por <a href="https://wa.me/' + CONFIG.WHATSAPP + '">WhatsApp</a>.</p>';
+  }
+}
+
+function foto(p, clase){
+  return p.imagen
+    ? `<img src="${esc(p.imagen)}" alt="${esc(p.nombre)}" loading="lazy" width="640" height="640">`
+    : `<div class="sin-foto"><div><span>${EMOJI[p.categoria] || '🍽️'}</span>${esc(p.nombre)}</div></div>`;
+}
+
+function pintarMenu(){
+  Object.keys(carrito).forEach(id => { if (!MENU.find(p => String(p.id) === id)) delete carrito[id]; });
+
+  const top = MENU.filter(p => p.destacado);
+  $('destacados').innerHTML = top.map(p => `
+    <article class="top">
+      ${foto(p)}
+      <div class="info">
+        <div><h3>${esc(p.nombre)}</h3><span class="precio">${dinero(p.precio)}</span></div>
+        <div class="contador" data-ctr="${esc(p.id)}"></div>
+      </div>
+    </article>`).join('');
+  $('destacados').closest('main').style.display = top.length ? '' : 'none';
+  prepararCarrusel();
+
+  const categorias = [...new Set(MENU.map(p => p.categoria || 'Otros'))];
+  $('nav').innerHTML = categorias.map(c => `<a href="#${slug(c)}">${EMOJI[c] || ''} ${esc(c)}</a>`).join('');
+  $('menu').innerHTML = categorias.map(c => `
+    <section id="${slug(c)}">
+      <h2 class="seccion-titulo">${esc(c)}</h2>
+      <div class="grilla">
+        ${MENU.filter(p => (p.categoria || 'Otros') === c).map(p => `
+          <article class="producto" data-prod="${esc(p.id)}">
+            <div class="foto">${foto(p)}${p.destacado ? '<span class="badge">🔥 Top</span>' : ''}</div>
+            <div class="info">
+              <h3>${esc(p.nombre)}</h3>
+              <p>${esc(p.descripcion)}</p>
+              <div class="fila">
+                <span class="precio">${dinero(p.precio)}</span>
+                <div class="contador" data-ctr="${esc(p.id)}"></div>
+              </div>
+            </div>
+          </article>`).join('')}
+      </div>
+    </section>`).join('');
+  MENU.forEach(p => pintarContador(p.id));
+  actualizarBarra(false);
+  observarCategorias();
+}
+
+
+/* ---------- Carrusel "Lo más pedido" ----------
+   Celular: se desliza con el dedo. Computador: flechas, puntos o arrastrar con el mouse.
+   Avanza solo cada 4 s y se detiene en cuanto la persona lo toca. */
+const car = { listo: false, auto: null, pausado: false };
+
+function tarjetasCarrusel(){ return [...$('destacados').querySelectorAll('.top')]; }
+function pasoCarrusel(){ const t = tarjetasCarrusel(); return t.length > 1 ? t[1].offsetLeft - t[0].offsetLeft : $('destacados').clientWidth; }
+function indiceCarrusel(){ return Math.round($('destacados').scrollLeft / pasoCarrusel()); }
+function irACarrusel(i){
+  const c = $('destacados'), max = c.scrollWidth - c.clientWidth;
+  c.scrollTo({ left: Math.max(0, Math.min(max, i * pasoCarrusel())), behavior: 'smooth' });
+}
+function actualizarCarrusel(){
+  const c = $('destacados'), max = c.scrollWidth - c.clientWidth - 4;
+  $('flecha-izq').disabled = c.scrollLeft <= 4;
+  $('flecha-der').disabled = c.scrollLeft >= max;
+  const total = tarjetasCarrusel().length, visibles = Math.max(1, Math.round(c.clientWidth / pasoCarrusel()));
+  const paginas = Math.max(1, total - visibles + 1);
+  const puntos = $('puntos');
+  if (puntos.children.length !== paginas) {
+    puntos.innerHTML = Array.from({ length: paginas }, (_, i) => `<button type="button" aria-label="Ir al plato ${i + 1}" data-punto="${i}"></button>`).join('');
+  }
+  puntos.style.display = paginas > 1 ? '' : 'none';
+  const actual = c.scrollLeft >= max ? paginas - 1 : Math.min(indiceCarrusel(), paginas - 1);
+  [...puntos.children].forEach((b, i) => b.classList.toggle('activo', i === actual));
+}
+function pararAuto(){ car.pausado = true; clearInterval(car.auto); }
+function iniciarAuto(){
+  clearInterval(car.auto);
+  if (car.pausado || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  car.auto = setInterval(() => {
+    const c = $('destacados');
+    if (c.scrollLeft >= c.scrollWidth - c.clientWidth - 4) irACarrusel(0); else irACarrusel(indiceCarrusel() + 1);
+  }, 4000);
+}
+
+function prepararCarrusel(){
+  const c = $('destacados');
+  if (!car.listo) {
+    car.listo = true;
+    $('flecha-izq').addEventListener('click', () => { pararAuto(); irACarrusel(indiceCarrusel() - 1); });
+    $('flecha-der').addEventListener('click', () => { pararAuto(); irACarrusel(indiceCarrusel() + 1); });
+    $('puntos').addEventListener('click', e => { const b = e.target.closest('[data-punto]'); if (b) { pararAuto(); irACarrusel(Number(b.dataset.punto)); } });
+    c.addEventListener('scroll', () => requestAnimationFrame(actualizarCarrusel), { passive: true });
+    c.addEventListener('touchstart', pararAuto, { passive: true });
+    c.addEventListener('mouseenter', () => clearInterval(car.auto));
+    c.addEventListener('mouseleave', iniciarAuto);
+    window.addEventListener('resize', actualizarCarrusel);
+
+    // Arrastrar con el mouse (en celular el dedo ya funciona de forma nativa)
+    let x0 = 0, s0 = 0, movio = false, activo = false;
+    c.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      activo = true; movio = false; x0 = e.clientX; s0 = c.scrollLeft; pararAuto();
+    });
+    window.addEventListener('pointermove', e => {
+      if (!activo) return;
+      const dx = e.clientX - x0;
+      if (!movio && Math.abs(dx) > 5) { movio = true; c.classList.add('arrastrando'); }
+      if (movio) c.scrollLeft = s0 - dx;
+    });
+    window.addEventListener('pointerup', () => {
+      if (!activo) return;
+      activo = false;
+      if (movio) { c.classList.remove('arrastrando'); irACarrusel(indiceCarrusel()); }
+    });
+    // Si fue un arrastre, que no cuente como toque en el botón "+"
+    c.addEventListener('click', e => { if (movio) { e.stopPropagation(); e.preventDefault(); movio = false; } }, true);
+    iniciarAuto();
+  }
+  requestAnimationFrame(actualizarCarrusel);
+}
+
+function pintarContador(id){
+  const cant = carrito[id] || 0;
+  document.querySelectorAll(`[data-ctr="${CSS.escape(id)}"]`).forEach(cont => {
+    cont.innerHTML = cant
+      ? `<button class="menos" type="button" aria-label="Quitar uno" data-id="${esc(id)}" data-d="-1">−</button><span>${cant}</span><button type="button" aria-label="Agregar uno" data-id="${esc(id)}" data-d="1">+</button>`
+      : `<button type="button" aria-label="Agregar" data-id="${esc(id)}" data-d="1">+</button>`;
+  });
+  const card = document.querySelector(`[data-prod="${CSS.escape(id)}"]`);
+  if (card) card.classList.toggle('en-carrito', cant > 0);
+}
+
+document.addEventListener('click', (e) => {
+  const quitar = e.target.closest('button[data-quitar]');
+  if (quitar) {
+    const id = quitar.dataset.quitar;
+    delete carrito[id]; claveEnvio = null;
+    guardarCarrito(); pintarContador(id); actualizarBarra(false); pintarResumen();
+    return;
+  }
+  if (e.target.closest('button[data-vaciar]')) {
+    const ids = Object.keys(carrito);
+    carrito = {};
+    guardarCarrito(); ids.forEach(pintarContador); actualizarBarra(false); pintarResumen();
+    return;
+  }
+  const b = e.target.closest('button[data-id]');
+  if (!b) return;
+  const id = b.dataset.id, delta = Number(b.dataset.d);
+  const nueva = Math.max(0, Math.min(30, (carrito[id] || 0) + delta));
+  if (nueva) carrito[id] = nueva; else delete carrito[id];
+  claveEnvio = null;
+  guardarCarrito(); pintarContador(id); actualizarBarra(delta > 0);
+  if ($('panel-fondo').classList.contains('abierto')) pintarResumen();
+});
+
+function lineasCarrito(){
+  return Object.entries(carrito).map(([id, cant]) => {
+    const p = MENU.find(x => String(x.id) === id);
+    return p ? { ...p, cantidad: cant, subtotal: p.precio * cant } : null;
+  }).filter(Boolean);
+}
+
+function actualizarBarra(animar){
+  const lineas = lineasCarrito();
+  const unidades = lineas.reduce((s, l) => s + l.cantidad, 0);
+  const total = lineas.reduce((s, l) => s + l.subtotal, 0);
+  $('barra').classList.toggle('visible', unidades > 0);
+  $('barra-cant').textContent = `🛒 Ver pedido (${unidades})`;
+  $('barra-total').textContent = dinero(total.toFixed(2));
+  if (animar) { const b = $('btn-barra'); b.classList.remove('pulso'); void b.offsetWidth; b.classList.add('pulso'); }
+}
+
+/* ---------- Navegación entre categorías ----------
+   - Al tocar una categoría se hace UN solo desplazamiento de la página hasta la sección.
+   - Mientras ese desplazamiento ocurre, el resaltado no se recalcula (así no lo interrumpe).
+   - La barra de categorías solo se mueve de lado (nunca mueve la página). */
+let navegando = false, finNavegacion = null;
+const altoNav = () => document.querySelector('nav.categorias').offsetHeight;
+
+function marcarCategoria(id){
+  const cont = $('nav');
+  cont.querySelectorAll('a').forEach(a => {
+    const on = a.getAttribute('href') === '#' + id;
+    if (on && !a.classList.contains('activa')) {
+      cont.scrollTo({ left: a.offsetLeft - (cont.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+    }
+    a.classList.toggle('activa', on);
+  });
+}
+
+function seccionActual(){
+  const limite = altoNav() + 24;
+  let actual = null;
+  document.querySelectorAll('#menu section').forEach(s => { if (s.getBoundingClientRect().top <= limite) actual = s; });
+  return actual;
+}
+
+function terminarNavegacion(){ navegando = false; clearTimeout(finNavegacion); actualizarResaltado(); }
+
+function actualizarResaltado(){
+  if (navegando) return;
+  const s = seccionActual();
+  if (s) marcarCategoria(s.id);
+  else $('nav').querySelectorAll('a').forEach(a => a.classList.remove('activa'));
+}
+
+function observarCategorias(){
+  $('nav').querySelectorAll('a').forEach(a => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    const destino = document.getElementById(id);
+    if (!destino) return;
+    navegando = true;
+    marcarCategoria(id);
+    const y = destino.getBoundingClientRect().top + window.scrollY - altoNav() - 8;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    clearTimeout(finNavegacion);
+    finNavegacion = setTimeout(terminarNavegacion, 1500);   // respaldo si el navegador no avisa 'scrollend'
+  }));
+  actualizarResaltado();
+}
+
+let pendiente = false;
+window.addEventListener('scroll', () => {
+  if (pendiente) return;
+  pendiente = true;
+  requestAnimationFrame(() => { pendiente = false; actualizarResaltado(); });
+}, { passive: true });
+window.addEventListener('scrollend', () => { if (navegando) terminarNavegacion(); });
+// Si la persona toca la pantalla mientras la página se mueve sola, le devolvemos el control
+['touchstart', 'wheel'].forEach(ev => window.addEventListener(ev, () => { if (navegando) terminarNavegacion(); }, { passive: true }));
+
+const ICONO_BASURA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>';
+
+// Lista editable del carrito dentro del panel: cambiar cantidades o quitar platos
+// sin salir del formulario (lo que la persona ya escribió no se pierde).
+function pintarResumen(){
+  const cont = $('resumen-pedido');
+  if (!cont) return;
+  const lineas = lineasCarrito();
+  if (!lineas.length) { cerrarPanel(); return; }
+  const total = lineas.reduce((s, l) => s + l.subtotal, 0);
+  cont.innerHTML = `
+    <ul class="resumen">${lineas.map(l => `
+      <li data-linea="${esc(l.id)}">
+        ${l.imagen ? `<img class="mini" src="${esc(l.imagen)}" alt="">` : `<span class="mini">${EMOJI[l.categoria] || '🍽️'}</span>`}
+        <div><span class="nom">${esc(l.nombre)}</span><span class="sub">${dinero(l.subtotal.toFixed(2))}</span></div>
+        <div class="acciones">
+          <div class="contador" data-ctr="${esc(l.id)}"></div>
+          <button class="quitar" type="button" data-quitar="${esc(l.id)}" aria-label="Quitar ${esc(l.nombre)} del pedido" title="Quitar">${ICONO_BASURA}</button>
+        </div>
+      </li>`).join('')}</ul>
+    <button class="vaciar" type="button" data-vaciar>Vaciar pedido</button>
+    <div class="total"><span>Total</span><span>${dinero(total.toFixed(2))}</span></div>`;
+  lineas.forEach(l => pintarContador(l.id));
+}
+
+function abrirPanel(){
+  $('panel-contenido').innerHTML = `
+    <h2 id="titulo-panel">Tu pedido</h2>
+    <div id="resumen-pedido"></div>
+    <p class="nota-chica">${esc(CONFIG.NOTA_DELIVERY)}</p>
+    <form id="form" onsubmit="enviarPedido(event)">
+      <label>Nombre<input name="nombre" required maxlength="60" autocomplete="name"></label>
+      <label>Teléfono (WhatsApp)<input name="telefono" required inputmode="tel" maxlength="20" placeholder="Ej: 0424 1234567 · otro país: +57 300…" autocomplete="tel"></label>
+      <div class="opciones">
+        <label><input type="radio" name="entrega" value="delivery" checked onchange="toggleDireccion()"> 🛵 Delivery</label>
+        <label><input type="radio" name="entrega" value="retiro" onchange="toggleDireccion()"> 🏪 Retiro</label>
+      </div>
+      <label id="campo-direccion">Dirección y punto de referencia<textarea name="direccion" maxlength="200" required placeholder="Sector, calle, casa y una referencia"></textarea></label>
+      <label>Forma de pago<select name="pago" required>${CONFIG.METODOS_PAGO.map(m => `<option>${esc(m)}</option>`).join('')}</select></label>
+      <label>Notas (opcional)<textarea name="notas" maxlength="300" placeholder="Sin cebolla, salsa aparte, carne o pollo…"></textarea></label>
+      <input class="oculto" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="error" id="error"></p>
+      <button class="btn" id="btn-enviar" type="submit">Enviar pedido 🔥</button>
+    </form>`;
+  pintarResumen();
+  $('panel-fondo').classList.add('abierto');
+}
+function cerrarPanel(){ $('panel-fondo').classList.remove('abierto'); }
+
+function toggleDireccion(){
+  const esDelivery = document.querySelector('input[name=entrega]:checked').value === 'delivery';
+  $('campo-direccion').style.display = esDelivery ? '' : 'none';
+  $('campo-direccion').querySelector('textarea').required = esDelivery;
+}
+
+let enviando = false;      // evita pedidos duplicados por doble clic o Enter repetido
+let claveEnvio = null;     // misma clave en los reintentos: si el primer intento sí llegó, no se duplica
+
+async function enviarPedido(ev){
+  ev.preventDefault();
+  if (enviando) return;
+  enviando = true;
+  const f = new FormData(ev.target);
+  if (!claveEnvio) claveEnvio = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : Date.now() + '-' + Math.random().toString(36).slice(2);
+  const pedido = {
+    nombre: f.get('nombre'), telefono: f.get('telefono'), entrega: f.get('entrega'),
+    direccion: f.get('entrega') === 'delivery' ? f.get('direccion') : '',
+    pago: f.get('pago'), notas: f.get('notas'), website: f.get('website'),
+    items: Object.entries(carrito).map(([id, cantidad]) => ({ id, cantidad })),
+    clave: claveEnvio,
+  };
+  const btn = $('btn-enviar');
+  btn.disabled = true; btn.textContent = 'Enviando…'; $('error').textContent = '';
+
+  try {
+    let r;
+    if (!CONFIG.API_URL) {                       // modo demostración
+      await new Promise(res => setTimeout(res, 700));
+      r = { ok: true, id: 'DEMO', total: lineasCarrito().reduce((s, l) => s + l.subtotal, 0) };
+    } else {
+      // Se envía como texto plano a propósito: así Google Apps Script lo acepta sin bloqueos CORS.
+      // Si el local está recibiendo muchos pedidos a la vez, se reintenta solo (misma clave: no se duplica)
+      for (let intento = 1; intento <= 3; intento++) {
+        const corte = new AbortController();
+        const reloj = setTimeout(() => corte.abort(), 40000);
+        try {
+          const resp = await fetch(CONFIG.API_URL, { method: 'POST', body: JSON.stringify(pedido), signal: corte.signal });
+          r = await resp.json();
+        } catch (x) {
+          throw new Error('No pudimos conectarnos. Revisa tu internet e intenta de nuevo (tu pedido no se duplicará).');
+        } finally { clearTimeout(reloj); }
+        if (!(r && r.ocupado) || intento === 3) break;
+        btn.textContent = 'Muchos pedidos ahora mismo, reintentando…';
+        await new Promise(res => setTimeout(res, 2500 * intento));
+      }
+    }
+    if (!r || !r.ok) throw new Error((r && r.error) || 'No se pudo registrar el pedido.');
+    mostrarExito(r, pedido);
+    carrito = {}; claveEnvio = null; guardarCarrito(); pintarMenu();
+  } catch (e) {
+    $('error').textContent = e.message + ' Si el problema sigue, pide por WhatsApp.';
+    btn.disabled = false; btn.textContent = 'Enviar pedido 🔥';
+  } finally {
+    enviando = false;
+  }
+}
+
+// Escape cierra el panel del pedido (teclado / computador)
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('panel-fondo').classList.contains('abierto')) cerrarPanel(); });
+
+function mostrarExito(r, pedido){
+  const detalle = lineasCarrito().map(l => `${l.cantidad} x ${l.nombre}`).join('\n');
+  const texto = `Hola ${CONFIG.NOMBRE}! 👋 Acabo de hacer el pedido #${r.id}${r.ref ? ` (ref. ${r.ref})` : ''} a nombre de ${pedido.nombre}.\n${detalle}\nTotal: ${dinero(Number(r.total).toFixed(2))} · Pago: ${pedido.pago}`;
+  $('panel-contenido').innerHTML = `
+    <div class="exito">
+      <p class="nota-chica">Tu número de pedido</p>
+      <p class="grande">#${esc(r.id)}</p>
+      <h2>¡Pedido recibido! 🌴🔥</h2>
+      ${r.ref ? `<p class="nota-chica">Referencia: ${esc(r.ref)}</p>` : ''}
+      <p>Total: <strong class="oro">${dinero(Number(r.total).toFixed(2))}</strong></p>
+      <p class="nota-chica" style="margin-top:8px">Ya le llegó al equipo. Te escribimos al WhatsApp que dejaste para confirmar ${pedido.entrega === 'delivery' ? 'el delivery y ' : ''}el pago.</p>
+      <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(texto)}">Enviar comprobante por WhatsApp</a>
+      <button class="btn btn-sec" type="button" onclick="cerrarPanel()">Seguir viendo el menú</button>
+    </div>`;
+}
+
+cargarMenu();
+</script>
+</body>
+</html>

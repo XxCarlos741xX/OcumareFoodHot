@@ -1,0 +1,11 @@
+PRUEBAS AUTOMÁTICAS — Ocumare Food Hot
+======================================
+Requisitos: Node.js 18+ (y para la web: npm install playwright && npx playwright install chromium)
+
+Backend (Code.gs con servicios de Google simulados, 39 pruebas):
+    node pruebas/backend.test.js
+
+Web (index.html en un navegador real, API simulada, 27 pruebas):
+    node pruebas/frontend.test.js
+
+Ejecutarlas después de cualquier cambio en Code.gs o index.html, antes de publicar.
